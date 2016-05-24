@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="EmpList">
+    <default-activity>EmListView</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="EmListView">
+      <page>/EmListView.jsff</page>
+    </view>
+    <task-flow-call id="EmpCreate">
+      <task-flow-reference>
+        <document>/WEB-INF/EmpCreate.xml</document>
+        <id>EmpCreate</id>
+      </task-flow-reference>
+      <return-value id="__8">
+        <name>NewEmployeeName</name>
+        <value>#{pageFlowScope.EmployeeName}</value>
+      </return-value>
+    </task-flow-call>
+    <view id="SuccessView">
+      <page>/SuccessView.jsff</page>
+    </view>
+    <view id="FailedView">
+      <page>/FailedView.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>EmListView</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>toCreate</from-outcome>
+        <to-activity-id>EmpCreate</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>EmpCreate</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>toSuccess</from-outcome>
+        <to-activity-id>SuccessView</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>toFailed</from-outcome>
+        <to-activity-id>FailedView</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>toEmpList</from-outcome>
+        <to-activity-id>EmListView</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

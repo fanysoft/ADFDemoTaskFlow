@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="Create New User" id="ph1">
+    <f:facet name="context"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:spacer width="10" height="10" id="s2"/>
+    <af:inputText label="User name" id="it1" binding="#{pageFlowScope.EmpCreateViewBean.employeeName}" required="true"/>
+    <af:spacer width="10" height="10" id="s3"/>
+    <af:separator id="s1"/>
+  </af:panelHeader>
+  <af:button text="Create" id="b1" action="toSave">
+    <af:setPropertyListener type="action" from="#{pageFlowScope.EmpCreateViewBean.employeeName.value}"
+                            to="#{pageFlowScope.NewEmployeeName}"/>
+  </af:button>
+  <af:button text="Cancel" id="b2" action="toCancel"/>
+</ui:composition>

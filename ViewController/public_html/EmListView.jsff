@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="Start Page" id="ph1">
+    <f:facet name="context"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="legend">
+      <af:separator id="s1"/>
+      <af:outputText value="ADF Task Flow with Managed Beans demo" id="ot1"/>
+    </f:facet>
+    <f:facet name="info"/>
+  </af:panelHeader>
+  <af:spacer width="10" height="80" id="s4"/>
+  <af:image source="#{resource['images:flow.JPG']}" id="i1"/>
+  <af:separator id="s2"/>
+  <af:button text="Create User" id="b1" action="toCreate"/>
+</ui:composition>
